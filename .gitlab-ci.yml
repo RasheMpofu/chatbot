@@ -1,0 +1,18 @@
+# Optional CI/CD variables:
+#   GRADING_IGNORE_EMAILS - Comma-separated emails to exclude, e.g.
+#                           "lecturer@uni.edu,assistant@uni.edu"
+
+stages:
+  - analyze
+
+analyze:
+  stage: analyze
+  image: registry.mygit.th-deg.de/aw-ansible/collections/awoelfl.project_grading:latest
+  script:
+    - ansible-playbook /usr/local/lib/grading/playbooks/analyze.yml
+  artifacts:
+    name: "contributor-reports-${CI_PIPELINE_IID}"
+    paths:
+      - "*.md"
+    expire_in: 30 days
+    when: always
