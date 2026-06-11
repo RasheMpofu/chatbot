@@ -85,9 +85,9 @@
             "slot": "Payment",
             "question": "How would you like to pay? We accept Credit Card, Debit Card & Online Payment.",
             "options": [
-                { "name": "Credit Card", "keywords": ["credit card"] },
-                { "name": "Debit Card", "keywords": ["debit card"] },
-                { "name": "Online Payment", "keywords": ["online payment"] }
+                { "name": "Credit Card", "keywords": ["credit card", "credit"] },
+                { "name": "Debit Card", "keywords": ["debit card", "debit"] },
+                { "name": "Online Payment", "keywords": ["online payment", "online"] }
             ]
         }
     
