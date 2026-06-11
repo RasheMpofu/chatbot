@@ -25,6 +25,7 @@ io.on("connection", (socket) =>
 
     let currentStep = 0;
     let order = {};
+    let failCount = 0;
 
     socket.on("disconnect", (reason) =>
     {
@@ -52,6 +53,7 @@ io.on("connection", (socket) =>
         if (matched !== null)
         {
             order[step.slot] = matched;
+            failCount = 0; // Reset fail count on successful match
             console.log("order so far: ", order);
             currentStep = currentStep + 1;
 
@@ -74,7 +76,18 @@ io.on("connection", (socket) =>
         }
         else
         {
-            socket.emit("answer", "Sorry, I didn't understand that. Please choose one of the options: " + step.options.map(o => o.name).join(", "));
+            failCount = failCount + 1;
+            if (failCount >= 3)
+            {
+                currentStep = 0;
+                order = {};
+                failCount = 0;
+                socket.emit("answer", "I'm having trouble understanding you. Let's start over! " + config.steps[0].question);
+            }
+            else
+            {
+                socket.emit("answer", "Sorry, I didn't understand that. Please choose one of the options: " + step.options.map(o => o.name).join(", "));
+            }
         }
     });
 });
