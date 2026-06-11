@@ -1,0 +1,95 @@
+{
+    "restaurantName": "Pizza Hut",
+    "steps": [
+        {
+            "slot": "Food",
+            "question": "Welcome to Pizza Hut What would you like to order? We have Pepperoni Pizza, Veggie Pizza & Cheese Pizza.",
+            "options": [
+                { "name": "Pepperoni Pizza", "keywords": ["pepperoni"] },
+                { "name": "Veggie Pizza", "keywords": ["veggie"] },
+                { "name": "Cheese Pizza", "keywords": ["cheese"] }
+            ]
+        },
+        {
+            "slot": "Size",
+            "question": "What size would you like? We have Small, Medium & Large.",
+            "options": [
+                { "name": "Small", "keywords": ["small"] },
+                { "name": "Medium", "keywords": ["medium"] },
+                { "name": "Large", "keywords": ["large"] }
+            ]
+        },
+        {
+            "slot": "Toppings",
+            "question": "Would you like to add any toppings? We have Extra Cheese, Mushrooms, Onions & Olives.",
+            "options": [
+                { "name": "Extra Cheese", "keywords": ["extra cheese"] },
+                { "name": "Mushrooms", "keywords": ["mushrooms"] },
+                { "name": "Onions", "keywords": ["onions"] },
+                { "name": "Olives", "keywords": ["olives"] },
+                { "name": "None", "keywords": ["none", "no"] }
+            ]
+        },
+        {
+            "slot": "Quantity",
+            "question": "How many pizzas would you like to order?",
+            "options": [
+                { "name": "1", "keywords": ["1"] },
+                { "name": "2", "keywords": ["2"] },
+                { "name": "3", "keywords": ["3"] },
+                { "name": "4", "keywords": ["4"] },
+                { "name": "5", "keywords": ["5"] }
+            ]
+        },
+        {
+            "slot": "Drinks",
+            "question": "Would you like to add any drinks? We have Coke, Pepsi, Sprite & Fanta.",
+            "options": 
+            [
+                { "name": "Coke", "keywords": ["coke"] },
+                { "name": "Pepsi", "keywords": ["pepsi"] },
+                { "name": "Sprite", "keywords": ["sprite"] },
+                { "name": "Fanta", "keywords": ["fanta"] },
+                { "name": "None", "keywords": ["none", "no"] }
+            ]
+        },
+        {
+            "slot": "Sides",
+            "question": "Would you like to add any sides? We have Garlic Bread, Nachos & Salad.",
+            "options": [
+                { "name": "Garlic Bread", "keywords": ["garlic bread"] },
+                { "name": "Nachos", "keywords": ["nachos"] },
+                { "name": "Salad", "keywords": ["salad"] },
+                { "name": "None", "keywords": ["none"] }
+            ]
+        },
+        {
+            "slot": "Dessert",
+            "question": "Would you like to add any desserts? We have Ice Cream, Cake & Brownies.",
+            "options": [
+                { "name": "Ice Cream", "keywords": ["ice cream"] },
+                { "name": "Cake", "keywords": ["cake"] },
+                { "name": "Brownies", "keywords": ["brownies"] },
+                { "name": "None", "keywords": ["none"] }
+            ]
+        },
+        {
+            "slot": "Service",
+            "question": "How would you like to receive your order? We offer Dine-in & Takeaway.",
+            "options": [
+                { "name": "Dine-in", "keywords": ["dine-in", "dine in"] },
+                { "name": "Takeaway", "keywords": ["takeaway", "take away"] }
+            ]
+        },
+        {
+            "slot": "Payment",
+            "question": "How would you like to pay? We accept Credit Card, Debit Card & Online Payment.",
+            "options": [
+                { "name": "Credit Card", "keywords": ["credit card"] },
+                { "name": "Debit Card", "keywords": ["debit card"] },
+                { "name": "Online Payment", "keywords": ["online payment"] }
+            ]
+        }
+    
+    ] 
+}
