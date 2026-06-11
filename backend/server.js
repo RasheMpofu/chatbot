@@ -1,5 +1,6 @@
 /*
- * Import packages
+ * This file creates a very simple chat server for a restaurant ordering flow.
+ * It listens for incoming customer messages and responds with the next prompt.
  */
 const express = require('express');
 const app = express();
@@ -12,19 +13,24 @@ const io = new Server(server);
 const config = require('./config.json');
 console.log("Restaurant loaded:", config.restaurantName);
 
+// Start the web server .
 server.listen(5000, function ()
 {
     console.log("server started at port 5000");
 });
 
+// Serve the browser files from the public folder.
 app.use(express.static('public'));
 
 io.on("connection", (socket) =>
 {
     console.log(`connect ${socket.id}`);
 
+    // Track what question the user is on.
     let currentStep = 0;
+    // Keep the user's selections .
     let order = {};
+    // Count bad inputs so we can restart after too many tries.
     let failCount = 0;
 
     socket.on("disconnect", (reason) =>
@@ -34,11 +40,14 @@ io.on("connection", (socket) =>
 
     socket.on("question", (data) =>
     {
-        console.log("recieved question: " + data)
+        console.log("received question: " + data);
+
+        // Normalize the message so keyword matching is easier.
         const text = data.toLowerCase();
         const step = config.steps[currentStep];
         let matched = null;
 
+        // Search all answer choices for a keyword typed.
         for (const option of step.options)
         {
             for (const keyword of option.keywords)
@@ -52,24 +61,29 @@ io.on("connection", (socket) =>
 
         if (matched !== null)
         {
+            // Saves the matched answer and move on to the next question.
             order[step.slot] = matched;
-            failCount = 0; // Reset fail count on successful match
+            failCount = 0;
             console.log("order so far: ", order);
             currentStep = currentStep + 1;
 
             if (currentStep < config.steps.length)
             {
+                // Asking the next question from the config file.
                 const answer = config.steps[currentStep].question;
                 socket.emit("answer", answer);
             }
             else
             {
+                // after the order is complete finalising the summary message.
                 let summary = "Order placed! Here is your order:\n";
                 for (const slot in order)
                 {
                     summary = summary + slot + ": " + order[slot] + "\n";
                 }
                 socket.emit("answer", summary);
+
+                // restarts for the next customer.
                 currentStep = 0;
                 order = {};
             }
@@ -79,6 +93,7 @@ io.on("connection", (socket) =>
             failCount = failCount + 1;
             if (failCount >= 3)
             {
+                // After a few failed attempts, clears the current order and starts over.
                 currentStep = 0;
                 order = {};
                 failCount = 0;
