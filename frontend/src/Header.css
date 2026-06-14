@@ -1,48 +1,38 @@
 .top_menu {
-    background-color: #fff;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     width: 100%;
-    padding: 20px 0 15px;
-    box-shadow: 0 1px 30px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
 .top_menu .buttons {
-    margin: 3px 0 0 20px;
-    position: absolute;
+    display: none;
 }
-.top_menu .buttons .button {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 10px;
-    position: relative;
-}
-.top_menu .buttons .button.close {
-    background-color: #f5886e;
-}
-.top_menu .buttons .button.minimize {
-    background-color: #fdbf68;
-}
-.top_menu .buttons .button.maximize {
-    background-color: #a3d063;
-}
+
 .top_menu .title {
     text-align: center;
-    color: #bcbdc0;
-    font-size: 20px;
-}
-.reset_button {
-    background-color: #a3d063;
     color: white;
+    font-size: 24px;
+    font-weight: 600;
+    flex-grow: 1;
+}
+
+.reset_button {
+    background-color: #fff;
+    color: #667eea;
     border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
+    padding: 10px 20px;
+    border-radius: 20px;
     cursor: pointer;
     font-size: 14px;
-    position: absolute;
-    right: 20px;
-    top: 20px;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
 .reset_button:hover {
-    background-color: #8bc34a;
+    background-color: #f0f0f0;
+    transform: scale(1.05);
 }
