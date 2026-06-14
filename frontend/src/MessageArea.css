@@ -24,3 +24,9 @@
 #messages::-webkit-scrollbar-thumb:hover {
     background: #764ba2;
 }
+@media (max-width: 768px) {
+    #messages {
+        padding: 15px 10px;
+        height: calc(100vh - 220px);
+    }
+}

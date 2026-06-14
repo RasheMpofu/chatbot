@@ -65,3 +65,23 @@
     font-weight: 400;
     line-height: 1.4;
 }
+@media (max-width: 768px) {
+    #messages .message {
+        margin-bottom: 12px;
+    }
+
+    #messages .message .avatar {
+        width: 42px;
+        height: 42px;
+    }
+
+    #messages .message .text_wrapper {
+        max-width: calc(100% - 65px);
+        padding: 11px 14px;
+        border-radius: 10px;
+    }
+
+    #messages .message .text {
+        font-size: 15px;
+    }
+}
