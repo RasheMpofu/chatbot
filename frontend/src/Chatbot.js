@@ -15,7 +15,7 @@ function Chatbot() {
      */
     const [messages, setMessages] = useState([{
         text: "Welcome to Pizza Hut! What would you like to order? We have Pepperoni Pizza, Veggie Pizza & Cheese Pizza.",
-        position: "left"
+        position: "left" ,timestamp: new Date().toLocaleTimeString() 
     }]);
 
     useEffect(() => {
@@ -27,7 +27,7 @@ function Chatbot() {
 
         //handle server responses
         socket.on("answer", (data) => {
-            setMessages([...messages, {text: data, position: "left"}])
+            setMessages([...messages, {text: data, position: "left", timestamp:new Date().toLocaleTimeString()}])
         });
 
     }, [messages]);
@@ -42,7 +42,7 @@ function Chatbot() {
 }
 
     function onSubmitMessage(inputText) {
-        setMessages([...messages, {text: inputText, position: "right"}])
+        setMessages([...messages, {text: inputText, position: "right", timestamp:new Date().toLocaleTimeString() }])
     }
 
     /*
