@@ -30,3 +30,19 @@
     color: #bcbdc0;
     font-size: 20px;
 }
+.reset_button {
+    background-color: #a3d063;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.reset_button:hover {
+    background-color: #8bc34a;
+}

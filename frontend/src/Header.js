@@ -1,7 +1,6 @@
 import React from "react";
 import './Header.css'
-
-function Header() {
+function Header(props) {
     return (
         <div className="top_menu">
             <div className="buttons">
@@ -10,8 +9,8 @@ function Header() {
                 <div className="button maximize"/>
             </div>
             <div className="title">Chat</div>
+            <button onClick={props.onReset} className="reset_button">Reset</button>
         </div>
     )
 }
-
 export {Header}

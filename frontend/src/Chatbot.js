@@ -32,6 +32,15 @@ function Chatbot() {
 
     }, [messages]);
 
+    function resetChat() {
+    setMessages([{
+        text: "Welcome to Pizza Hut! What would you like to order? We have Pepperoni Pizza, Veggie Pizza & Cheese Pizza.",
+        position: "left"
+    }]);
+    socket.disconnect();
+    socket.connect();
+}
+
     function onSubmitMessage(inputText) {
         setMessages([...messages, {text: inputText, position: "right"}])
     }
@@ -41,7 +50,7 @@ function Chatbot() {
     */
     return (
         <div className="chat_window">
-            <Header />
+            <Header onReset={resetChat} />
             <MessageArea messages={messages} />
             <UserInput onSubmitMessage={onSubmitMessage} />
         </div>
