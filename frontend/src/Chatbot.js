@@ -43,14 +43,33 @@ function Chatbot() {
 
     function onSubmitMessage(inputText) {
         setMessages([...messages, {text: inputText, position: "right", timestamp:new Date().toLocaleTimeString() }])
-    }
+    } 
+function exportChat() {
+    let exportData = messages.map((item) => {
+        return {
+            sender: item.position === "right" ? "user" : "bot",
+            text: item.text,
+            timestamp: item.timestamp
+        }
+    });
+    let jsonString = JSON.stringify(exportData, null, 2);
+    let blob = new Blob([jsonString], {type: "application/json"});
+    let url = URL.createObjectURL(blob);
+    let link = document.createElement("a");
+    link.href = url;
+    link.download = "chat.json";
+    link.click();
+    URL.revokeObjectURL(url);
+}
+
+
 
     /*
       Render HTML
     */
     return (
         <div className="chat_window">
-            <Header onReset={resetChat} />
+            <Header onReset={resetChat} onExport={exportChat} />
             <MessageArea messages={messages} />
             <UserInput onSubmitMessage={onSubmitMessage} />
         </div>
