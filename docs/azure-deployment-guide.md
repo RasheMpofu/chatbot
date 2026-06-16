@@ -1,9 +1,9 @@
 ## Azure Deployment 
 
-The chatbot will be deployed to the Microsoft Azure cloud to ensure it is available it available publicly with a unique url.
+The chatbot will be deployed to the Microsoft Azure cloud to ensure application it is available  publicly with a unique URL.
 This document serves as a guide to track the implementation of the application on the cloud.
 
-# Servive 
+# Service 
 Azure App Services
 
 # Deployment Plan
