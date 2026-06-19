@@ -15,7 +15,7 @@ function Chatbot() {
      */
     const [messages, setMessages] = useState([{
         text: "Welcome to Pizza Hut! What would you like to order? We have Pepperoni Pizza, Veggie Pizza & Cheese Pizza.",
-        position: "left" ,timestamp: new Date().toLocaleTimeString() 
+        position: "left" ,timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) 
     }]);
 
     useEffect(() => {
@@ -27,22 +27,22 @@ function Chatbot() {
 
         //handle server responses
         socket.on("answer", (data) => {
-            setMessages([...messages, {text: data, position: "left", timestamp:new Date().toLocaleTimeString()}])
-        });
+            setMessages([...messages, {text: data, position: "left", timestamp:new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }]); 
+        }); 
 
     }, [messages]);
 
     function resetChat() {
     setMessages([{
         text: "Welcome to Pizza Hut! What would you like to order? We have Pepperoni Pizza, Veggie Pizza & Cheese Pizza.",
-        position: "left"
+        position: "left" , timestamp:new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) 
     }]);
     socket.disconnect();
     socket.connect();
 }
 
     function onSubmitMessage(inputText) {
-        setMessages([...messages, {text: inputText, position: "right", timestamp:new Date().toLocaleTimeString() }])
+        setMessages([...messages, {text: inputText, position: "right", timestamp:new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }]);
     } 
 function exportChat() {
     if (messages.length === 1) {
