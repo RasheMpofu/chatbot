@@ -45,6 +45,10 @@ function Chatbot() {
         setMessages([...messages, {text: inputText, position: "right", timestamp:new Date().toLocaleTimeString() }])
     } 
 function exportChat() {
+    if (messages.length === 1) {
+    alert("No conversation to export yet!");
+    return;
+}
     let exportData = messages.map((item) => {
         return {
             sender: item.position === "right" ? "user" : "bot",
