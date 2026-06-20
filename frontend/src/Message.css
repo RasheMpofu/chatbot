@@ -65,6 +65,33 @@
     font-weight: 400;
     line-height: 1.4;
 }
+@keyframes slideInFromLeft {
+    from{
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes slideInFromRight{
+    from{
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+#messages .message.left.appeared{
+   animation: slideInFromLeft 0.4s ease-out;
+}
+#messages .message.right.appeared {
+    animation: slideInFromRight 0.4s ease-out;
+}
+
 @media (max-width: 768px) {
     #messages .message {
         margin-bottom: 12px;
