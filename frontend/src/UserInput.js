@@ -3,9 +3,6 @@ import './UserInput.css'
 
 function UserInput(props) {
 
-    /*
-    Handle input text
-    */
     const [inputText, setInputText] = useState("")
 
     function handleChange(e) {
@@ -16,11 +13,15 @@ function UserInput(props) {
         props.onSubmitMessage(inputText);
         setInputText("");
     }
-
+    function handleKeyPress(e) {
+     if (e.key === 'Enter') {
+        handleSubmit();
+    }
+}
     return (
         <div className="bottom_wrapper clearfix">
             <div className="message_input_wrapper">
-                <input className="message_input" value={inputText} onChange={handleChange}
+               <input className="message_input" value={inputText} onChange={handleChange} onKeyPress={handleKeyPress}
                        placeholder="Type your message here..."/>
             </div>
             <div className="send_message" onClick={handleSubmit}>
