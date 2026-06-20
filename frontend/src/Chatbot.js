@@ -15,7 +15,7 @@ function Chatbot() {
      */
     const [messages, setMessages] = useState([{
         text: "Welcome to Pizza Hut! What would you like to order? We have Pepperoni Pizza, Veggie Pizza & Cheese Pizza.",
-        position: "left"
+        position: "left" ,timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) 
     }]);
 
     useEffect(() => {
@@ -27,30 +27,53 @@ function Chatbot() {
 
         //handle server responses
         socket.on("answer", (data) => {
-            setMessages([...messages, {text: data, position: "left"}])
-        });
+            setMessages([...messages, {text: data, position: "left", timestamp:new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }]); 
+        }); 
 
     }, [messages]);
 
     function resetChat() {
     setMessages([{
         text: "Welcome to Pizza Hut! What would you like to order? We have Pepperoni Pizza, Veggie Pizza & Cheese Pizza.",
-        position: "left"
+        position: "left" , timestamp:new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) 
     }]);
     socket.disconnect();
     socket.connect();
 }
 
     function onSubmitMessage(inputText) {
-        setMessages([...messages, {text: inputText, position: "right"}])
-    }
+        setMessages([...messages, {text: inputText, position: "right", timestamp:new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }]);
+    } 
+function exportChat() {
+    if (messages.length === 1) {
+    alert("No conversation to export yet!");
+    return;
+}
+    let exportData = messages.map((item) => {
+        return {
+            sender: item.position === "right" ? "user" : "bot",
+            text: item.text,
+            timestamp: item.timestamp
+        }
+    });
+    let jsonString = JSON.stringify(exportData, null, 2);
+    let blob = new Blob([jsonString], {type: "application/json"});
+    let url = URL.createObjectURL(blob);
+    let link = document.createElement("a");
+    link.href = url;
+    link.download = "chat.json";
+    link.click();
+    URL.revokeObjectURL(url);
+}
+
+
 
     /*
       Render HTML
     */
     return (
         <div className="chat_window">
-            <Header onReset={resetChat} />
+            <Header onReset={resetChat} onExport={exportChat} />
             <MessageArea messages={messages} />
             <UserInput onSubmitMessage={onSubmitMessage} />
         </div>

@@ -8,6 +8,7 @@ function Message(props) {
             <div className="avatar"/>
             <div className="text_wrapper">
                 <div className="text">{props.text}</div>
+                <div className="timestamp">{props.timestamp}</div>
             </div>
         </li>
     )

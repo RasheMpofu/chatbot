@@ -23,7 +23,7 @@ function MessageArea(props) {
     return (
         <ul id="messages">
             {props.messages.map((item, i) =>
-                (<Message text={item.text} position={item.position}/>))}
+                (<Message text={item.text} position={item.position} timestamp={item.timestamp}/>))}
             <li ref={messagesEndRef}/>
         </ul>
     )

@@ -9,7 +9,8 @@ function Header(props) {
                 <div className="button maximize"/>
             </div>
             <div className="title">Chat</div>
-            <button onClick={props.onReset} className="reset_button">Reset</button>
+            <button onClick={props.onReset} className="reset_button">Reset </button>
+             <button onClick={props.onExport} className="export_button">Export </button>
         </div>
     )
 }

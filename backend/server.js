@@ -13,10 +13,10 @@ const io = new Server(server);
 const config = require('./config.json');
 console.log("Restaurant loaded:", config.restaurantName);
 
-// Start the web server .
-server.listen(5000, function ()
+const PORT = process.env.PORT || 5000;
+server.listen(PORT, function ()
 {
-    console.log("server started at port 5000");
+    console.log("server started at port " + PORT);
 });
 
 // Serve the browser files from the public folder.
