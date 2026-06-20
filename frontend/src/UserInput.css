@@ -46,7 +46,7 @@
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
     border: none;
     color: white;
     cursor: pointer;
@@ -59,7 +59,7 @@
 
 .bottom_wrapper .send_message:hover {
     transform: scale(1.1);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 4px 12px rgba(211, 47, 47, 0.4);
 }
 
 .bottom_wrapper .send_message:active {

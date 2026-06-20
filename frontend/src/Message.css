@@ -11,13 +11,13 @@
 }
 
 #messages .message.left .avatar {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
     float: left;
     margin-right: 12px;
 }
 
 #messages .message.left .text_wrapper {
-    background-color: #f0f4f8;
+    background-color: #fef5e7;
     color: #333;
     margin-left: 0;
     float: left;
@@ -34,7 +34,7 @@
 }
 
 #messages .message.right .text_wrapper {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
     float: right;
     margin-right: 0;
     color: white;
