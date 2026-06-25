@@ -4,7 +4,9 @@
  */
 const express = require('express');
 const app = express();
-
+app.get("/", (req, res) => {
+    res.send("Chatbot server running");
+});
 const http = require('http');
 const server = http.createServer(app);
 
