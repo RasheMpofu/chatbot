@@ -4,8 +4,14 @@
  */
 const express = require('express');
 const app = express();
-app.get("/", (req, res) => {
-    res.send("Chatbot server running");
+const path = require("path");
+
+// Serve the React build
+app.use(express.static(path.join(__dirname, "frontend", "build")));
+
+// Return index.html for all routes
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
 });
 const http = require('http');
 const server = http.createServer(app);
@@ -21,8 +27,7 @@ server.listen(PORT, function ()
     console.log("server started at port " + PORT);
 });
 
-// Serve the browser files from the public folder.
-app.use(express.static('public'));
+
 
 io.on("connection", (socket) =>
 {
