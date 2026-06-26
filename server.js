@@ -21,7 +21,7 @@ const io = new Server(server);
 const config = require('./config.json');
 console.log("Restaurant loaded:", config.restaurantName);
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 5000;
 server.listen(PORT, function ()
 {
     console.log("server started at port " + PORT);
