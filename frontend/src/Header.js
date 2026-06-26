@@ -8,7 +8,7 @@ function Header(props) {
                 <div className="button minimize"/>
                 <div className="button maximize"/>
             </div>
-            <div className="title">Chat</div>
+            <div className="title">ORDER HERE!</div>
             <button onClick={props.onReset} className="reset_button">Reset </button>
              <button onClick={props.onExport} className="export_button">Export </button>
         </div>
