@@ -24,9 +24,12 @@
 }
 
 .bottom_wrapper .message_input_wrapper:focus-within {
-    border-color: #764ba2;
+    border-color: #d32f2f;
     background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.1);
+    transform: scale(1.02);
 }
+
 
 .bottom_wrapper .message_input_wrapper .message_input {
     border: none;
@@ -43,9 +46,9 @@
 }
 
 .bottom_wrapper .send_message {
-    width: 45px;
+    width: 60px;
     height: 45px;
-    border-radius: 50%;
+    border-radius: 20px;
     background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
     border: none;
     color: white;
@@ -97,8 +100,9 @@
     }
 
     .bottom_wrapper .send_message {
-        width: 44px;
+        width: 55px;
         height: 44px;
+        border-radius: 12px;
     }
 
     .bottom_wrapper .send_message .text {
