@@ -10,27 +10,25 @@ import {io} from "socket.io-client"
 const socket = io("");
 
 function Chatbot() {
-    /*
-      Handle messages
-     */
+    
     const [messages, setMessages] = useState([{
         text: "Welcome to Pizza Hut! What would you like to order? We have Pepperoni Pizza, Veggie Pizza & Cheese Pizza.",
         position: "left" ,timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) 
     }]);
+    const [isTyping, setIsTyping] = useState(false);
 
-    useEffect(() => {
-        //if last message is a non-empty question, ask the server
-        let lastMessage = messages[messages.length - 1]
-        if (lastMessage.text !== "" && lastMessage.position === "right") {
-            socket.emit('question', lastMessage.text);
-        }
-
-        //handle server responses
-        socket.on("answer", (data) => {
-            setMessages([...messages, {text: data, position: "left", timestamp:new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }]); 
-        }); 
-
-    }, [messages]);
+useEffect(() => {
+    let lastMessage = messages[messages.length - 1]
+    if (lastMessage.text !== "" && lastMessage.position === "right") {
+        setIsTyping(true);
+        socket.emit('question', lastMessage.text);
+    }
+    
+    socket.on("answer", (data) => {
+        setMessages([...messages, {text: data, position: "left", timestamp:new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }]);
+        setIsTyping(false);
+    }); 
+}, [messages]);
 
     function resetChat() {
     setMessages([{
@@ -67,14 +65,10 @@ function exportChat() {
 }
 
 
-
-    /*
-      Render HTML
-    */
     return (
         <div className="chat_window">
             <Header onReset={resetChat} onExport={exportChat} />
-            <MessageArea messages={messages} />
+           <MessageArea messages={messages} isTyping={isTyping} />
             <UserInput onSubmitMessage={onSubmitMessage} />
         </div>
     );
