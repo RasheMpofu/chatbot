@@ -5,7 +5,8 @@
     margin: 0;
     height: calc(100vh - 280px);
     overflow-y: auto;
-    background-color: #fffef9;
+    background-color: #302902;
+    scroll-behavior: smooth;
 }
 
 #messages::-webkit-scrollbar {
@@ -28,5 +29,58 @@
     #messages {
         padding: 15px 10px;
         height: calc(100vh - 220px);
+    }
+}
+
+.typing-indicator {
+    clear: both;
+    overflow: hidden;
+    margin-bottom: 15px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.typing-indicator .avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
+    flex-shrink: 0;
+}
+
+.typing-dots {
+    display: flex;
+    gap: 6px;
+    background-color: #fef5e7;
+    padding: 12px 16px;
+    border-radius: 12px;
+}
+
+.typing-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #d32f2f;
+    animation: typingBounce 1.4s infinite;
+}
+
+.typing-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typingBounce {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.7;
+    }
+    30% {
+        transform: translateY(-10px);
+        opacity: 1;
     }
 }
