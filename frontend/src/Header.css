@@ -36,6 +36,7 @@
     background-color: #3a06061f;
     color: #667eea;
     border: 2px solid #c2d32f65;
+    margin-left: 12px;
     padding: 10px 20px;
     border-radius: 20px;
     cursor: pointer;
@@ -85,3 +86,5 @@
         font-size: 13px;
     }
 }
+    
+
