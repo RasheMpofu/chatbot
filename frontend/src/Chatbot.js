@@ -30,7 +30,10 @@ useEffect(() => {
     }); 
 }, [messages]);
 
-    function resetChat() {
+    function resetChat() { let userSaidYes = window.confirm("Are you sure you want to reset the chat?");
+        if (!userSaidYes) {
+    return;
+}
     setMessages([{
         text: "Welcome to Pizza Hut! What would you like to order? We have Pepperoni Pizza, Veggie Pizza & Cheese Pizza.",
         position: "left" , timestamp:new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) 
@@ -75,3 +78,7 @@ function exportChat() {
 }
 
 export default Chatbot;
+
+    
+    
+   
