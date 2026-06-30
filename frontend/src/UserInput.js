@@ -10,6 +10,8 @@ function UserInput(props) {
     }
 
     function handleSubmit() {
+        if (inputText.trim()=== "" )
+            return;
         props.onSubmitMessage(inputText);
         setInputText("");
     }
@@ -33,3 +35,4 @@ function UserInput(props) {
 }
 
 export {UserInput}
+
