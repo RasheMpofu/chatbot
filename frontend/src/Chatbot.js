@@ -24,10 +24,16 @@ useEffect(() => {
         socket.emit('question', lastMessage.text);
     }
     
-    socket.on("answer", (data) => {
-        setMessages([...messages, {text: data, position: "left", timestamp:new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }]);
-        setIsTyping(false);
-    }); 
+   socket.on("answer", (data) => {
+
+    let updatedMessages = [...messages];
+    if (updatedMessages[updatedMessages.length - 1].position === "right") {
+        updatedMessages[updatedMessages.length - 1].read = true;
+    }
+    updatedMessages.push({text: data, position: "left", timestamp:new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
+    setMessages(updatedMessages);
+    setIsTyping(false);
+});
 }, [messages]);
 
     function resetChat() { let userSaidYes = window.confirm("Are you sure you want to reset the chat?");
@@ -81,4 +87,4 @@ export default Chatbot;
 
     
     
-   
+ 
