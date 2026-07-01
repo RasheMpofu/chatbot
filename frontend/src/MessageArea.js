@@ -1,4 +1,3 @@
-
 import React, {useEffect, useRef} from "react";
 import './MessageArea.css'
 import {Message} from "./Message";
@@ -21,7 +20,7 @@ function MessageArea(props) {
   return (
     <ul id="messages">
         {props.messages.map((item, i) =>
-            (<Message text={item.text} position={item.position} timestamp={item.timestamp}/>))}
+    (<Message text={item.text} position={item.position} timestamp={item.timestamp} read={item.read}/>))}
         {props.isTyping && (
             <li className="typing-indicator">
                 <div className="avatar"/>
@@ -39,3 +38,6 @@ function MessageArea(props) {
 }
 
 export {MessageArea}
+
+
+
