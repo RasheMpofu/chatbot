@@ -10,10 +10,13 @@ function Message(props) {
 ) : (
     <div className="avatar">👤</div>
 )}
-            <div className="text_wrapper">
-                <div className="text">{props.text}</div>
-                <div className="timestamp">{props.timestamp}</div>
-            </div>
+           <div className="text_wrapper">
+    <div className="text">{props.text}</div>
+    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '4px'}}>
+        <div className="timestamp">{props.timestamp}</div>
+        {props.read && props.position === "right" && <span style={{fontSize: '14px', color: '#FEF5E7'}}>✓</span>}
+    </div>
+</div>
         </li>
     )
 }
