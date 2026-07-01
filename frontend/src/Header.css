@@ -21,8 +21,8 @@
 }
 
 .reset_button {
-    background-color: #3a06061f;
-    color: #667eea;
+    background-color: #3a0606aa;
+    color: #fff;
     border: 2px solid #93931590;
     padding: 10px 20px;
     border-radius: 20px;
@@ -33,8 +33,8 @@
 }
 
 .export_button {
-    background-color: #3a06061f;
-    color: #667eea;
+    background-color: #3a0606aa;
+    color: #fff;
     border: 2px solid #c2d32f65;
     margin-left: 12px;
     padding: 10px 20px;
@@ -46,11 +46,11 @@
 }
 
 .reset_button:hover {
-    background-color: #f0f0f0;
+    background-color: #d32f2f;
     transform: scale(1.15) translateY(-2px);
+    color: #fff;
     box-shadow: 0 8px 20px rgba(211, 47, 47, 0.3);
 }
-
 .reset_button:focus {
     outline: 3px solid rgba(211, 47, 47, 0.3);
     outline-offset: 2px;
@@ -62,8 +62,9 @@
 }
 
 .export_button:hover {
-    background-color: #f0f0f0;
+    background-color: #d32f2f;
     transform: scale(1.15) translateY(-2px);
+    color: #fff;
     box-shadow: 0 8px 20px rgba(211, 47, 47, 0.3);
 }
 
