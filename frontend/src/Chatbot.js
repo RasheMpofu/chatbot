@@ -1,3 +1,4 @@
+
 import React, {useEffect, useState} from "react";
 import './Chatbot.css';
 
@@ -51,7 +52,7 @@ useEffect(() => {
     function onSubmitMessage(inputText) {
         setMessages([...messages, {text: inputText, position: "right", timestamp:new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }]);
     } 
-function exportChat() {
+   function exportChat() {
     if (messages.length === 1) {
     alert("No conversation to export yet!");
     return;
@@ -67,8 +68,10 @@ function exportChat() {
     let blob = new Blob([jsonString], {type: "application/json"});
     let url = URL.createObjectURL(blob);
     let link = document.createElement("a");
+    let now = new Date();
+let date = now.getFullYear() + "-" + (now.getMonth()+1) + "-" + now.getDate();
     link.href = url;
-    link.download = "chat.json";
+    link.download = "chat-" + date + ".json";
     link.click();
     URL.revokeObjectURL(url);
 }
@@ -85,6 +88,5 @@ function exportChat() {
 
 export default Chatbot;
 
-    
     
  
