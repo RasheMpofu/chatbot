@@ -19,23 +19,29 @@ function Chatbot() {
     const [isTyping, setIsTyping] = useState(false);
 
 useEffect(() => {
+    socket.on("answer", (data) => {
+        setMessages(prev => {
+            let updated = [...prev];
+            if (updated[updated.length - 1].position === "right") {
+                updated[updated.length - 1].read = true;
+            }
+            updated.push({text: data, position: "left", timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })});
+            return updated;
+        });
+        setIsTyping(false);
+    });
+    return () => socket.off("answer");
+}, []);
+
+useEffect(() => {
     let lastMessage = messages[messages.length - 1]
     if (lastMessage.text !== "" && lastMessage.position === "right") {
         setIsTyping(true);
         socket.emit('question', lastMessage.text);
     }
-    
-   socket.on("answer", (data) => {
-
-    let updatedMessages = [...messages];
-    if (updatedMessages[updatedMessages.length - 1].position === "right") {
-        updatedMessages[updatedMessages.length - 1].read = true;
-    }
-    updatedMessages.push({text: data, position: "left", timestamp:new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) });
-    setMessages(updatedMessages);
-    setIsTyping(false);
-});
 }, [messages]);
+    
+   
 
     function resetChat() { let userSaidYes = window.confirm("Are you sure you want to reset the chat?");
         if (!userSaidYes) {
