@@ -60,7 +60,7 @@
                 { "name": "Garlic Bread", "keywords": ["garlic bread"] },
                 { "name": "Nachos", "keywords": ["nachos"] },
                 { "name": "Salad", "keywords": ["salad"] },
-                { "name": "None", "keywords": ["none"] }
+                { "name": "None", "keywords": ["none", "no"] }
             ]
         },
         {
@@ -70,7 +70,7 @@
                 { "name": "Ice Cream", "keywords": ["ice cream"] },
                 { "name": "Cake", "keywords": ["cake"] },
                 { "name": "Brownies", "keywords": ["brownies"] },
-                { "name": "None", "keywords": ["none"] }
+                { "name": "None", "keywords": ["none", "no"] }
             ]
         },
         {
@@ -93,3 +93,4 @@
     
     ] 
 }
+           
